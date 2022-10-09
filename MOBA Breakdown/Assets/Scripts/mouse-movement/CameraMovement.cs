@@ -37,11 +37,14 @@ public class CameraMovement : MonoBehaviour
 
         mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
-        
-        Vector3 worldScrollDirection = new Vector3(GetScreenScrollDirection().x, 0, GetScreenScrollDirection().y);
-        Vector3 worldScrollTranslation = worldScrollDirection * scrollSpeed * Time.deltaTime;
-        transform.Translate(worldScrollTranslation, Space.World);
-        Debug.Log($"Camera movement direction: {GetScreenScrollDirection()}");
+        if (GetScreenScrollDirection() != Vector2.zero)
+        {
+            Vector2 screenScrollDirection = GetScreenScrollDirection();
+            Vector3 worldScrollDirection = new Vector3(screenScrollDirection.x, 0, screenScrollDirection.y);
+            Vector3 worldScrollTranslation = worldScrollDirection * scrollSpeed * Time.deltaTime;
+            transform.Translate(worldScrollTranslation, Space.World);
+            Debug.Log($"Camera movement direction: {worldScrollTranslation}");
+        }
     }
 
     //# Public Methods 
