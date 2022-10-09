@@ -1,7 +1,7 @@
 //================================================================
 // Personal Project, started in Oct. 2022
 // Script by:    Daniel Heilmann
-// Last changed: 07-10-22
+// Last changed: 09-10-22
 // TODO: Change scroll speed based on how close the cursor is to the edge.
 //================================================================
 
@@ -22,11 +22,6 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Vector2 mousePosition;
 
     //# Monobehaviour Events 
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         if (screenDimensions != GetScreenDimensions())
@@ -43,7 +38,7 @@ public class CameraMovement : MonoBehaviour
             Vector3 worldScrollDirection = new Vector3(screenScrollDirection.x, 0, screenScrollDirection.y);
             Vector3 worldScrollTranslation = worldScrollDirection * scrollSpeed * Time.deltaTime;
             transform.Translate(worldScrollTranslation, Space.World);
-            Debug.Log($"Camera movement direction: {worldScrollTranslation}");
+            //Debug.Log($"Camera movement direction: {worldScrollTranslation}");
         }
     }
 
