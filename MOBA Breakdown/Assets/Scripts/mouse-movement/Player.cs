@@ -2,6 +2,7 @@
 // Personal Project, started in Oct. 2022
 // Script by:    Daniel Heilmann
 // Last changed: 09-10-22
+// TODO: Rework button inputs using new Input System.
 //================================================================
 
 using System.Collections;
