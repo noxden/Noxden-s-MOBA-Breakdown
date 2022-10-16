@@ -15,6 +15,8 @@ public class Character : MonoBehaviour
     //# Constants 
 
     //# Public Variables 
+    public int maxHP;
+    public int currentHP;
 
     //# Private Variables 
     private NavMeshAgent agent;
@@ -40,6 +42,20 @@ public class Character : MonoBehaviour
         NavMeshPath path = agent.path;
         for (int i = 0; i < path.corners.Length - 1; i++)
             Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red, 2);
+    }
+
+    public void PlaceAbility(Vector3 location)
+    {
+        Ability ability = gameObject.AddComponent(typeof(Ability)) as Ability;
+        ability.size = 5;
+        ability.duration = 10;
+        ability.location = new Vector2(location.x, location.z);
+    }
+
+    public void Update()
+    {
+        float res = (float)currentHP/maxHP;
+        gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = new Color(1, res,res, 1);
     }
 
     //# Private Methods 

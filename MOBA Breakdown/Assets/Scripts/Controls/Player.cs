@@ -42,6 +42,21 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 100.0f))
+            {
+                if (hit.collider.CompareTag(groundTag))
+                {
+                    Vector3 location = hit.point;
+                    //Debug.Log($"Raycast hit ground at {location}.");
+                    pilotedCharacter.PlaceAbility(location);
+                }
+            }
+        }
     }
 
     //# Public Methods 
