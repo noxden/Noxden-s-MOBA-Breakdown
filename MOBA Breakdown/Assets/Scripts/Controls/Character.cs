@@ -46,10 +46,11 @@ public class Character : MonoBehaviour
 
     public void PlaceAbility(Vector3 location)
     {
-        Ability ability = gameObject.AddComponent(typeof(Ability)) as Ability;
-        ability.size = 5;
-        ability.duration = 10;
-        ability.location = new Vector2(location.x, location.z);
+        GameObject ability = new GameObject("Ability");
+        AOEAbility abilityScript = ability.AddComponent(typeof(AOEAbility)) as AOEAbility;
+        abilityScript.size = 5;
+        abilityScript.duration = 10;
+        abilityScript.location = new Vector2(location.x, location.z);
     }
 
     public void Update()
